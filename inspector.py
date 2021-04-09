@@ -40,15 +40,11 @@ class File:
 
 # checkFile: Treats the file according to the magic bytes found (Currently only treats PNG)
 def checkFile(file, fixFile=False, forceType=None):
-    if forceType != None:
-        forceType = forceType.lower()
-        if forceType == 'png': # Forces the type to PNG, now the file will be treated as one
-            file.setType("Force type: PNG")
-            Png = PNG(file.retName(), fixFile)
-            Png.info()
-            file.details(Png)
-        else: 
-            print('Type not recognized')
+    if forceType != False:
+        file.setType("Force type: PNG")
+        Png = PNG(file.retName(), fixFile)
+        Png.info()
+        file.details(Png)
     else:     
         if file.hex[:8] == ['89','50','4e','47','0d','0a','1a','0a']: # Checks whether the bytes are corresponding with a PNG file
             file.setType("PNG")
@@ -62,12 +58,12 @@ def checkFile(file, fixFile=False, forceType=None):
 def help(func=None):
     if func == None:
         print("Usage:\n\tinspector [OPTIONS] [FILE]")
-        print("\nOptions:\n\t-ff, --fixfile:\n\t\tTry to fix file bytes (Recommended to backup the file before)\n\n\t-ft=<extension>, --forcetype=<extension>:\n\t\tTreat the file as input type\n")
+        print("\nOptions:\n\t-ff, --fixfile:\n\t\tTry to fix file bytes (Recommended to backup the file before)\n\n\t-ft, --forcetype:\n\t\tTreats the file as PNG\n")
     return
 
 # checkParameters: Function that is intended to check the parameters passed to the script and treat them
 def checkParameters(file, size):
-    ft = None # By default, ft (force type) come as None
+    ft = False # By default, ft (force type) come as False
     ff = False # By default ff (fix file) come as False
     parameters = file.retParameters()
 
@@ -82,10 +78,10 @@ def checkParameters(file, size):
         elif parameters[i] == "--fixfile":
             ff = True
         # Force type
-        elif parameters[i][:4] == "-ft=":
-            ft = parameters[i][4:]
-        elif parameters[i][:12] == "--forcetype=":
-            ft = parameters[i][12:]
+        elif parameters[i] == "-ft":
+            ft = True
+        elif parameters[i] == "--forcetype":
+            ft = True
         else:
             print(f"INPUT ERROR: Parameter '{parameters[i]}' Not recognized")
             exit()                  
