@@ -74,6 +74,9 @@ Taking the same image as the basis for the following two outputs
   WARNING: Weird chunk found on PNG file, named as pLTE with 768 bytes of size
   ```
   
+  ### Upcoming
+  From one of the expected updates, we have the optimization of the brute force function in order to achieve greater efficiency
+  
   ### References
   * [PNG File structure](https://github.com/rcrs4/Tebas/blob/master/forense/png/pt-br.md) (This material is in Portuguese)
   * <https://www.w3.org/TR/PNG>
