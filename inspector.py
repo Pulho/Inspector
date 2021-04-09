@@ -58,7 +58,7 @@ def checkFile(file, fixFile=False, forceType=None):
 def help(func=None):
     if func == None:
         print("Usage:\n\tinspector [OPTIONS] [FILE]")
-        print("\nOptions:\n\t-ff, --fixfile:\n\t\tTry to fix file bytes (Recommended to backup the file before)\n\n\t-ft, --forcetype:\n\t\tTreats the file as PNG\n")
+        print("\nOptions:\n\t-ff, --fixfile:\n\t\tTry to fix file bytes (Recommended to backup the file before using it)\n\n\t-ft, --forcetype:\n\t\tTreats the file as PNG\n")
     return
 
 # checkParameters: Function that is intended to check the parameters passed to the script and treat them
