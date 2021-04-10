@@ -7,7 +7,7 @@ For this script it is necessary Python3.
 
 ### How to use it
 
-```
+```py
 Usage:
         inspector [OPTIONS] [FILE]
 
@@ -23,11 +23,11 @@ Ps.: With the fixFile parameter it is recommended to make a copy of the file in 
 ### Exemple of output
 Taking the same image as the basis for the following two outputs
 * For the first case we will run the script without parameter. In the case of this image, it has the header bytes outside the default of a PNG, thus not normally recognized
-  ```
+  ```yaml
   Magic bytes not recognized
   ```
 * For the second case, we will run the script with the parameter _forceType_ (-_ft_), so this way, even if the image does not have the magic bytes recognized, it continues to be treated as a PNG
-  ```
+  ```yaml
   Showing file Propriety:
   Chunks Order: ['IHDR', 'tEXt', 'pLTE', 'IDAT', 'IEND']
   Dimension: 0x0
@@ -47,7 +47,7 @@ Taking the same image as the basis for the following two outputs
   WARNING: Weird chunk found on PNG file, named as pLTE with 768 bytes of size
   ```
 * For the third and last case, we will run the script with the parameters _forceType_ (-_ft_) along with _fixFile_ (-_ff_), so that this way, some minor corrections can be made to the image we are analyzing. In this scenario, the script will use the brute force function to try to guess the dimensions of the image, through the chunk CRC.
-  ```
+  ```yaml
   Correcting image dimension, this may take a while. . .
 
 
