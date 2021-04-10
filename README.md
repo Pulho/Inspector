@@ -21,7 +21,25 @@ Options:
 Ps.: With the fixFile parameter it is recommended to make a copy of the file in question, as this parameter will possibly make changes to the bytes of the image.
 
 ### Exemple of output
-Taking the same image as the basis for the following two outputs
+Based on an image that has the following bytes
+
+|Offset (h) | bytes | content |
+|:------:|:---------------------------------------------:|:--------------:|
+|00000000|83 50 4E 47 0D 0A 0A 0A 00 00 00 0D 49 48 44 52| ƒPNG........IHDR|
+|00000010|00 00 00 00 00 00 00 00 08 03 00 00 00 69 83 45|.............iƒE|
+|00000020|EC 00 00 00 25 74 45 58 74 48 65 6C 6C 6F 2C 20|ì...%tEXtHello, |
+|00000030|49 27 6D 20 61 20 63 6F 6D 6D 65 6E 74 20 77 69|I'm a comment wi|
+|00000040|74 68 69 6E 20 74 68 65 20 69 6D 61 67 65 41 CC|thin the imageAÌ|
+|00000050|D2 64 00 00 03 00 70 4C 54 45 9E AB C0 9A A7 BC|Òd....pLTEž«Àš§¼|
+|.|.|.|
+|.|.|.|
+|.|.|.|
+|.|.|.|
+|0004A280|9F AA 9E F9 FF 05 EF 56 50 88 B0 85 A6 C3 00 00|Ÿªžùÿ.ïVPˆ°…¦Ã..|
+|0004A290|00 00 49 45 4E 44 AE 42 60 82|..IEND®B`‚|
+
+So as can be seen, this has corrupted parts, which do not fit into a PNG format, and we expect the script to detect what the parts are. For this reasons, i will use this image to show the characteristics of the script as well as the operation of its parameters.
+
 * For the first case we will run the script without parameter. In the case of this image, it has the header bytes outside the default of a PNG, thus not normally recognized
   ```yaml
   Magic bytes not recognized
